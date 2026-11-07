@@ -1,7 +1,7 @@
 // ==========================================
 // SERVICE WORKER - Invitación Especial
 // ==========================================
-const CACHE_NAME = 'invitacion-cache-v7';
+const CACHE_NAME = 'invitacion-cache-v9';
 
 const ARCHIVOS_CACHE = [
   './',

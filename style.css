@@ -18,7 +18,6 @@ body {
   transition: background 0.5s;
 }
 
-/* Ocultamos los textos cuando la foto está en pantalla completa */
 body.modo-lectura .titulo-invitacion,
 body.modo-lectura .instruccion {
   opacity: 0;
@@ -26,25 +25,25 @@ body.modo-lectura .instruccion {
 }
 
 .titulo-invitacion {
-  color: #d4af37;
-  text-shadow: 2px 2px 4px #000, 0 0 20px #b8860b;
+  color: #ffd700; /* Dorado más brillante */
+  text-shadow: 2px 2px 4px #000, 0 0 20px #ff8c00;
   font-size: clamp(1.4rem, 5vw, 2.5rem);
   margin-bottom: 2rem;
   text-align: center;
   letter-spacing: 2px;
-  animation: brillo 3s infinite alternate;
+  animation: brillo 2s infinite alternate;
   font-weight: 700;
   transition: opacity 0.5s;
 }
 
 @keyframes brillo {
-  from { text-shadow: 2px 2px 4px #000, 0 0 10px #b8860b; }
-  to   { text-shadow: 2px 2px 4px #000, 0 0 30px #ffd700; }
+  from { text-shadow: 2px 2px 4px #000, 0 0 10px #ff8c00; }
+  to   { text-shadow: 2px 2px 4px #000, 0 0 30px #ffd700, 0 0 40px #ff0000; }
 }
 
 .instruccion {
   margin-top: 2.5rem;
-  color: #d4af37;
+  color: #ffd700;
   font-size: 1rem;
   letter-spacing: 1.5px;
   animation: latir 2s infinite;
@@ -56,7 +55,7 @@ body.modo-lectura .instruccion {
   50%      { opacity: 1; }
 }
 
-/* ================= ESTRUCTURA DEL SOBRE ================= */
+/* ================= SOBRE CON COLORES VIVIDOS ================= */
 .contenedor-sobre {
   position: relative;
   width: 320px;
@@ -67,13 +66,14 @@ body.modo-lectura .instruccion {
 .sobre-trasero {
   position: absolute;
   inset: 0;
-  background: #f4e4c1;
+  /* Rojo carmesí intenso y brillante */
+  background: linear-gradient(135deg, #e60000, #990000);
   border-radius: 8px;
-  border: 2px solid #c9a96e;
+  border: 2px solid #ffd700; /* Borde dorado */
+  box-shadow: 0 10px 30px rgba(230, 0, 0, 0.4);
   z-index: 1;
 }
 
-/* Tarjeta (Foto) - Escondida adentro */
 .tarjeta-invitacion {
   position: absolute;
   width: 94%;
@@ -83,8 +83,9 @@ body.modo-lectura .instruccion {
   background: #fff;
   border-radius: 4px;
   overflow: hidden;
-  z-index: 2; /* Capa 2: Debajo de los bolsillos */
-  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 2;
+  /* Efecto rebote elástico */
+  transition: transform 0.9s cubic-bezier(0.28, 0.84, 0.42, 1.2);
 }
 
 .foto-invitacion {
@@ -93,16 +94,17 @@ body.modo-lectura .instruccion {
   object-fit: cover;
 }
 
-/* Bolsillo frontal - Una sola capa que cubre la parte de abajo */
+/* Bolsillo frontal */
 .sobre-frente {
   position: absolute;
   inset: 0;
-  background: #dec59c;
-  /* Hace la forma de V clásica del sobre */
+  /* Un rojo un poco más oscuro para dar profundidad */
+  background: linear-gradient(to bottom, #27ae60, #3498db);
   clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
-  z-index: 3; /* Capa 3: Tapa la foto por delante */
+  z-index: 3;
   border-radius: 8px;
-  border: 2px solid #c9a96e;
+  border: 2px solid #ffd700;
+  border-top: none;
 }
 
 /* Tapa superior */
@@ -112,36 +114,39 @@ body.modo-lectura .instruccion {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #d4b88c;
+  background: linear-gradient(to bottom, #ff1a1a, #b30000);
   clip-path: polygon(0 0, 50% 50%, 100% 0);
   border-radius: 8px 8px 0 0;
   transform-origin: top;
   transition: transform 0.8s ease;
-  z-index: 4; /* Capa 4: Tapa todo por arriba */
+  z-index: 4;
   transform: perspective(1000px) rotateX(0deg);
+  border-top: 2px solid #ffd700;
+  box-shadow: inset 0 5px 15px rgba(255, 239, 0, 1); /* Brillo extra */
 }
 
-/* Sello de cera */
+/* Sello de cera brillante */
 .sello-cera {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75px;
-  height: 75px;
-  background: radial-gradient(circle at 30% 30%, #c93030, #7a0000 80%);
+  width: 85px;
+  height: 85px;
+  /* Degradado para efecto de cera derretida brillante */
+  background: radial-gradient(circle at 30% 30%, #ff4d4d, #cc0000 60%, #660000 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-  z-index: 5; /* Capa 5: Arriba de todo */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.6), inset 0 -4px 8px rgba(0,0,0,0.5), inset 0 4px 8px rgba(255,255,255,0.4);
+  z-index: 5;
   transition: opacity 0.4s, transform 0.4s;
-  border: 2px solid #5a0000;
+  border: 3px solid #ffd700; /* Borde dorado brillante */
 }
 
 .conejito {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   filter: drop-shadow(1px 1px 2px #000);
   transform: rotate(-15deg);
 }
@@ -149,7 +154,7 @@ body.modo-lectura .instruccion {
 /* ================= ANIMACIONES DE APERTURA ================= */
 .contenedor-sobre.abierto .solapa-frontal {
   transform: perspective(1000px) rotateX(180deg);
-  z-index: 1; /* Se va al fondo para no estorbar */
+  z-index: 1;
 }
 
 .contenedor-sobre.abierto .sello-cera {
@@ -157,11 +162,11 @@ body.modo-lectura .instruccion {
   transform: translate(-50%, -50%) scale(0) rotate(90deg);
 }
 
-/* La carta sale del sobre */
+/* La carta sale con rebote (el translateY simula el salto) */
 .contenedor-sobre.abierto .tarjeta-invitacion {
-  transform: translateY(-100px);
-  z-index: 4; /* Sube por encima del bolsillo (que era 3) */
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  transform: translateY(-120px) scale(1.02);
+  z-index: 4;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(255, 215, 0, 0.5);
 }
 
 /* ================= PANTALLA COMPLETA ================= */
@@ -171,14 +176,13 @@ body.modo-lectura .instruccion {
   left: 0;
   width: 100vw;
   height: 100vh;
-  transform: translateY(0) !important; /* Anula la animación anterior */
+  transform: translateY(0) scale(1) !important;
   border-radius: 0;
-  z-index: 9999; /* Por encima de todo en el universo */
+  z-index: 9999;
   background: #000;
   transition: all 0.5s ease;
 }
 
-/* Ajuste de la foto en pantalla completa (para que no se corte) */
 .tarjeta-invitacion.pantalla-completa .foto-invitacion {
   object-fit: contain; 
 }
@@ -190,9 +194,9 @@ body.modo-lectura .instruccion {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   color: #fff;
-  border: 2px solid #d4af37;
+  border: 2px solid #ffd700;
   font-size: 1.2rem;
   cursor: pointer;
   z-index: 10000;
@@ -204,4 +208,19 @@ body.modo-lectura .instruccion {
 
 .boton-cerrar.visible {
   display: flex;
+}
+
+/* ================= GLOBOS ANIMADOS ================= */
+.globo {
+  position: fixed;
+  bottom: -100px;
+  font-size: 3rem;
+  z-index: 9000;
+  pointer-events: none;
+  animation: flotar 4s ease-in forwards;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
 }
